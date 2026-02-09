@@ -3,32 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adam Litwinski - Producer & Editor</title>
-    <meta name="description" content="Award-winning producer and editor with 20+ years experience working with Disney, Marvel, Apple, Amazon, and NBCUniversal.">
+    <title>Adam Litwinski | Producer • Editor • Post Leader</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --accent: #ff3366;
-            --accent-hover: #ff5580;
+            --bg-black: #050505;
+            --bg-card: #121212;
+            --accent: #ff6600;
+            --accent-hover: #ff8533;
+            --accent-glow: rgba(255, 102, 0, 0.15);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-black);
+            color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -36,103 +28,93 @@
         /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
+            top: 0; width: 100%;
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(15px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        nav .container {
+        .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -1px; }
+        .logo span { color: var(--accent); }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
+        nav ul { display: flex; list-style: none; gap: 2.5rem; }
+        nav a { 
+            color: var(--text-dim); 
+            text-decoration: none; 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-        }
-
-        nav a:hover {
-            color: var(--text-primary);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+        nav a:hover { color: var(--accent); }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 8rem 2rem 4rem;
-            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, var(--accent-glow) 0%, transparent 70%);
         }
 
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero-content h1 {
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            letter-spacing: -3px;
+        }
+
+        .hero-content .accent-text {
+            color: var(--accent);
+            display: block;
         }
 
         .hero .subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 3rem;
         }
 
-        .client-marquee {
-            margin-top: 4rem;
-            overflow: hidden;
+        /* Marquee */
+        .marquee {
+            width: 100%;
             padding: 2rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            position: absolute;
+            bottom: 10vh;
         }
 
-        .client-marquee-content {
+        .marquee-content {
             display: flex;
-            gap: 3rem;
+            gap: 4rem;
             animation: scroll 40s linear infinite;
         }
 
-        .client-marquee-content span {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+        .marquee span {
             white-space: nowrap;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-dim);
+            letter-spacing: 2px;
         }
 
         @keyframes scroll {
@@ -140,224 +122,182 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Section Styles */
+        /* General Section Layout */
         section {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 10rem 2rem;
         }
 
-        .section-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 3rem;
+        .section-header { margin-bottom: 4rem; }
+        .section-header h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
             letter-spacing: -1px;
+        }
+        .section-header .line {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin-top: 1rem;
         }
 
         /* About Section */
-        .about-content {
+        .about-grid {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: start;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 6rem;
+            align-items: center;
         }
 
-        .about-image {
-            width: 100%;
-            aspect-ratio: 1;
+        .about-img {
             background: var(--bg-card);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            aspect-ratio: 1;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .about-img::after {
+            content: '';
+            position: absolute;
+            top: 20px; left: 20px; right: -20px; bottom: -20px;
+            border: 2px solid var(--accent);
+            z-index: -1;
         }
 
         .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Work Section */
-        .work-category {
-            margin-bottom: 6rem;
-        }
-
-        .category-header {
+            font-size: 1.2rem;
+            color: var(--text-dim);
             margin-bottom: 2rem;
+            line-height: 1.8;
         }
 
-        .category-header h3 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+        /* Work Categories & Carousels */
+        .category { margin-bottom: 8rem; }
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .category-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .carousel-wrapper {
             position: relative;
-            padding: 0 60px;
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 10;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        /* HIDE ARROWS FOR REELS ON DESKTOP */
-        #reels-section .carousel-nav {
-            display: none;
-        }
-
-        .carousel-nav:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-        }
-
-        .carousel-nav.prev {
-            left: 0;
-        }
-
-        .carousel-nav.next {
-            right: 0;
+            margin: 0 -1rem;
         }
 
         .carousel-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            overflow: hidden;
+            padding: 1rem;
         }
 
-        /* Special grid for reels section to match 2 videos */
-        #reels-carousel {
-            grid-template-columns: repeat(2, 1fr);
-        }
+        /* Specific for Reels */
+        #reels-carousel { grid-template-columns: repeat(2, 1fr); }
 
         .video-card {
             background: var(--bg-card);
-            border-radius: 8px;
+            border-radius: 4px;
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
+            transition: 0.4s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .video-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .video-thumbnail {
-            width: 100%;
+        .thumbnail-box {
+            position: relative;
             aspect-ratio: 16/9;
             background: #000;
-            position: relative;
-            overflow: hidden;
         }
 
-        .video-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .thumbnail-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
 
-        .play-button {
+        .play-btn {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 51, 102, 0.9);
+            width: 60px; height: 60px;
+            background: var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            transition: 0.3s;
         }
 
-        .play-button::after {
+        .play-btn::after {
             content: '';
-            width: 0;
-            height: 0;
-            border-left: 16px solid white;
+            border-left: 15px solid white;
             border-top: 10px solid transparent;
             border-bottom: 10px solid transparent;
-            margin-left: 4px;
+            margin-left: 5px;
         }
 
-        .video-card:hover .play-button {
-            transform: translate(-50%, -50%) scale(1.1);
-            background: var(--accent);
+        .video-card:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); }
+
+        .video-info { padding: 1.5rem; }
+        .video-info h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .video-info p { font-size: 0.85rem; color: var(--text-dim); }
+
+        /* Carousel Navigation */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px; height: 50px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: 0.3s;
         }
 
-        .video-info {
-            padding: 1.5rem;
-        }
-
-        .video-info h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .video-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
+        .nav-btn:hover { background: var(--accent); border-color: var(--accent); }
+        .nav-btn.prev { left: -25px; }
+        .nav-btn.next { right: -25px; }
 
         /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
         }
 
-        .skill-category {
+        .skill-box {
             background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 2.5rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
         }
 
-        .skill-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .skill-tag {
-            background: rgba(255, 51, 102, 0.1);
-            color: var(--text-primary);
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 51, 102, 0.2);
+        .skill-box h3 { margin-bottom: 1.5rem; font-size: 1.3rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
         }
 
         /* Contact Section */
@@ -365,279 +305,144 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: start;
         }
 
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+        .contact-info h3 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .contact-info p { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 3rem; }
 
-        .contact-info p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .contact-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: var(--bg-card);
-            color: var(--text-primary);
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-btn:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .contact-form {
-            background: var(--bg-card);
-            padding: 2.5rem;
-            border-radius: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: var(--bg-dark);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
+        .contact-btns { display: flex; gap: 1.5rem; }
+        .cta-btn {
+            padding: 1.2rem 2.5rem;
             background: var(--accent);
             color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: 0.3s;
         }
+        .cta-btn:hover { background: var(--accent-hover); transform: translateY(-3px); }
 
-        .submit-btn:hover {
-            background: var(--accent-hover);
+        .cta-btn.outline {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
+        .cta-btn.outline:hover { border-color: var(--accent); }
 
         /* Modal */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
             z-index: 2000;
             align-items: center;
             justify-content: center;
             padding: 2rem;
         }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            width: 100%;
-            max-width: 1200px;
-            position: relative;
-        }
-
+        .modal.active { display: flex; }
+        .modal-content { width: 100%; max-width: 1200px; position: relative; }
         .modal-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            transition: transform 0.3s;
+            position: absolute; top: -50px; right: 0;
+            background: none; border: none; color: white;
+            font-size: 2.5rem; cursor: pointer;
         }
+        .modal iframe { width: 100%; aspect-ratio: 16/9; border-radius: 8px; }
 
-        .modal-close:hover {
-            transform: scale(1.1);
-        }
-
-        .modal iframe {
-            width: 100%;
-            aspect-ratio: 16/9;
-            border: none;
-            border-radius: 8px;
-            border: 0;
-        }
-
-        /* Responsive */
+        /* Mobile Adjustments */
         @media (max-width: 1024px) {
-            .carousel-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            #reels-carousel {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .carousel-container { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; gap: 4rem; }
         }
 
         @media (max-width: 768px) {
-            nav ul {
+            /* REELS SECTION REMAINS UNTOUCHED (Grid Layout) */
+            #reels-carousel { grid-template-columns: 1fr; }
+
+            /* OTHER CAROUSELS: SWITCH TO SWIPE/SCROLL */
+            .carousel-container:not(#reels-carousel) {
+                display: flex; /* Horizontal flow */
+                overflow-x: auto; /* Enable Scroll */
+                scroll-snap-type: x mandatory; /* Snap to center */
+                gap: 1rem;
+                padding-bottom: 2rem; /* Space for scrollbar if visible/touch area */
+                grid-template-columns: none; /* Reset grid */
+                /* Hide scrollbar for cleaner look */
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
+            
+            .carousel-container:not(#reels-carousel)::-webkit-scrollbar {
                 display: none;
             }
 
-            .mobile-menu-btn {
-                display: block;
+            /* VIDEO CARD ADJUSTMENTS FOR SWIPE */
+            .carousel-container:not(#reels-carousel) .video-card {
+                flex: 0 0 85%; /* Card takes 85% width (Bleeds edges) */
+                width: 85%;
+                scroll-snap-align: center; /* Snap to center of screen */
+                display: block !important; /* Force show all items (JS override) */
             }
 
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .carousel-wrapper {
-                padding: 0 50px;
-            }
-
-            .carousel-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
-            /* SHOW ARROWS FOR REELS ON MOBILE ONLY */
-            #reels-section .carousel-nav {
-                display: flex;
-            }
-
-            .carousel-container {
-                grid-template-columns: 1fr;
+            /* ARROW NAVIGATION ON MOBILE */
+            .nav-btn { 
+                display: flex; /* Show arrows */
+                top: auto;
+                bottom: -50px; /* Position below container */
+                transform: none;
             }
             
-            #reels-carousel {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .carousel-wrapper {
-                padding: 0 40px;
-            }
+            /* Position arrows side by side below */
+            .nav-btn.prev { left: 35%; margin-left: -30px; }
+            .nav-btn.next { right: 35%; margin-right: -30px; }
+            
+            /* General text adjustments */
+            .hero-content h1 { font-size: 4rem; }
+            .contact-content { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
     <nav>
-        <div class="container">
-            <div class="logo">Adam Litwinski</div>
+        <div class="nav-container">
+            <div class="logo">ADAM <span>LITWINSKI</span></div>
             <ul>
-                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#work">Work</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">☰</button>
         </div>
     </nav>
 
     <section id="home" class="hero">
-        <div>
-            <h1>Adam Litwinski</h1>
-            <p class="subtitle">Producer | Editor | Post-Production Leader</p>
-            
-            <div class="client-marquee">
-                <div class="client-marquee-content">
-                    <span>DISNEY</span>
-                    <span>MARVEL</span>
-                    <span>APPLE</span>
-                    <span>AMAZON</span>
-                    <span>NBCUNIVERSAL</span>
-                    <span>NESTLE</span>
-                    <span>WALMART</span>
-                    <span>NVIDIA</span>
-                    <span>E! NEWS</span>
-                    <span>MAKERBOT</span>
-                    <span>LOUIS VUITTON</span>
-                    <span>ESPN</span>
-                    <span>HULU</span>
-                    <span>PIXAR</span>
-                    <span>LUCASFILM</span>
-                    <span>20TH CENTURY STUDIOS</span>
-                    <span>NATIONAL GEOGRAPHIC</span>
-                    <span>STATE FARM</span>
-                    <span>PROVIDENCE</span>
-                    <span>DISNEY</span>
-                    <span>MARVEL</span>
-                    <span>APPLE</span>
-                    <span>AMAZON</span>
-                    <span>NBCUNIVERSAL</span>
-                    <span>NESTLE</span>
-                    <span>WALMART</span>
-                    <span>NVIDIA</span>
-                    <span>E! NEWS</span>
-                    <span>MAKERBOT</span>
-                    <span>LOUIS VUITTON</span>
-                    <span>ESPN</span>
-                    <span>HULU</span>
-                    <span>PIXAR</span>
-                    <span>LUCASFILM</span>
-                    <span>20TH CENTURY STUDIOS</span>
-                    <span>NATIONAL GEOGRAPHIC</span>
-                    <span>STATE FARM</span>
-                    <span>PROVIDENCE</span>
-                </div>
+        <div class="hero-content">
+            <p class="subtitle">Producer • Editor • Post-Production Leader</p>
+            <h1>CREATIVE<br><span class="accent-text">STORYTELLING</span></h1>
+        </div>
+        
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>DISNEY</span><span>MARVEL</span><span>APPLE</span><span>AMAZON</span>
+                <span>NBCUNIVERSAL</span><span>NESTLE</span><span>WALMART</span><span>NVIDIA</span>
+                <span>E! NEWS</span><span>MAKERBOT</span><span>LOUIS VUITTON</span><span>ESPN</span>
+                <span>HULU</span><span>PIXAR</span><span>LUCASFILM</span><span>NATIONAL GEOGRAPHIC</span>
+                <span>DISNEY</span><span>MARVEL</span><span>APPLE</span><span>AMAZON</span>
+                <span>NBCUNIVERSAL</span><span>NESTLE</span><span>WALMART</span><span>NVIDIA</span>
+                <span>E! NEWS</span><span>MAKERBOT</span><span>LOUIS VUITTON</span><span>ESPN</span>
+                <span>HULU</span><span>PIXAR</span><span>LUCASFILM</span><span>NATIONAL GEOGRAPHIC</span>
             </div>
         </div>
     </section>
 
     <section id="about">
-        <h2 class="section-title">About</h2>
-        <div class="about-content">
-            <div class="about-image">
-                [Your Photo Here]
-            </div>
+        <div class="section-header">
+            <h2>ABOUT</h2>
+            <div class="line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-img">
+                </div>
             <div class="about-text">
                 <p>With more than 20 years in film, TV, and digital media, Adam Litwinski has built a career as a producer, editor, and post-production leader. His past work includes projects for Disney, Marvel, Apple, Amazon, and NBCUniversal. He has directed travel shows throughout Southeast Asia and educational films for U.S. school systems, managed multilingual crews, and led large video-production teams as Director of Video Production at Urban Box Office during the pioneering days of online media.</p>
                 <p>Over the course of his career, Adam has built and led post-production departments, designing workflows and supervising editors to deliver high-volume, broadcast-ready content under tight deadlines. His background spans both offline creative editorial and senior finishing, allowing him to shape story, pacing, and tone before carrying projects through final delivery for leading studios, networks, and streaming platforms. Today, he continues to evolve modern post workflows by integrating emerging AI tools alongside traditional finishing to support fast, high-quality delivery.</p>
@@ -646,443 +451,224 @@
     </section>
 
     <section id="work">
-        <h2 class="section-title">Selected Work</h2>
+        <div class="section-header">
+            <h2>SELECTED WORK</h2>
+            <div class="line"></div>
+        </div>
 
-        <div class="work-category" id="reels-section">
-            <div class="category-header">
-                <h3>Reels</h3>
-            </div>
+        <div class="category">
+            <h3 class="category-title">REELS</h3>
             <div class="carousel-wrapper">
-                <div class="carousel-nav prev" onclick="navigateCarousel('reels', -1)">‹</div>
-                <div class="carousel-nav next" onclick="navigateCarousel('reels', 1)">›</div>
                 <div class="carousel-container" id="reels-carousel">
-                    <div class="video-card" data-video="xi97axuLfBE" data-si="lgbFikxHqdNC1bdE" data-autoplay="true">
-                        <div class="video-thumbnail">
+                    <div class="video-card" data-video="xi97axuLfBE">
+                        <div class="thumbnail-box">
                             <img src="https://img.youtube.com/vi/xi97axuLfBE/maxresdefault.jpg" alt="Online Editor Reel">
-                            <div class="play-button"></div>
+                            <div class="play-btn"></div>
                         </div>
-                        <div class="video-info">
-                            <h4>Online Editor Reel</h4>
-                            <p>Professional editing showcase</p>
-                        </div>
+                        <div class="video-info"><h4>Online Editor Reel</h4><p>Professional Finishing & Mastering</p></div>
                     </div>
-                    <div class="video-card" data-video="w9zQz425QfQ" data-si="9fj5R6pleYS9hL-3">
-                        <div class="video-thumbnail">
+                    <div class="video-card" data-video="w9zQz425QfQ">
+                        <div class="thumbnail-box">
                             <img src="https://img.youtube.com/vi/w9zQz425QfQ/maxresdefault.jpg" alt="Offline Editor Reel">
-                            <div class="play-button"></div>
+                            <div class="play-btn"></div>
                         </div>
-                        <div class="video-info">
-                            <h4>Offline Editor Reel</h4>
-                            <p>Story-driven editing</p>
-                        </div>
+                        <div class="video-info"><h4>Offline Editor Reel</h4><p>Story & Creative Editorial</p></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="work-category">
-            <div class="category-header">
-                <h3>AI Generated</h3>
-            </div>
+        <div class="category">
+            <h3 class="category-title">AI GENERATED</h3>
             <div class="carousel-wrapper">
-                <div class="carousel-nav prev" onclick="navigateCarousel('ai', -1)">‹</div>
-                <div class="carousel-nav next" onclick="navigateCarousel('ai', 1)">›</div>
+                <button class="nav-btn prev" onclick="navigate('ai', -1)">‹</button>
+                <button class="nav-btn next" onclick="navigate('ai', 1)">›</button>
                 <div class="carousel-container" id="ai-carousel">
-                    <div class="video-card" data-video="qMrQIKzTXWM" data-si="YzM4DHy7pGF96Ycr">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/qMrQIKzTXWM/maxresdefault.jpg" alt="Conduit Collective Reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Conduit Collective Reel</h4>
-                        </div>
+                    <div class="video-card" data-video="qMrQIKzTXWM">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/qMrQIKzTXWM/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Conduit Collective Reel</h4></div>
                     </div>
-                    <div class="video-card" data-video="Fa_qozZo8QU" data-si="N9UIUVy7kzv5LHcn">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/Fa_qozZo8QU/maxresdefault.jpg" alt="Save the Robots">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Save the Robots</h4>
-                        </div>
+                    <div class="video-card" data-video="Fa_qozZo8QU">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/Fa_qozZo8QU/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Save the Robots</h4></div>
                     </div>
-                    <div class="video-card" data-video="odTiZQI60fs" data-si="iKrOuEBRbsgNyW_C">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/odTiZQI60fs/maxresdefault.jpg" alt="Dogged Vine Winery">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Dogged Vine Winery</h4>
-                        </div>
+                    <div class="video-card" data-video="odTiZQI60fs">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/odTiZQI60fs/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Dogged Vine Winery</h4></div>
                     </div>
-                    <div class="video-card" data-video="o1Mif0xfzvU" data-si="f3kyN2eqZ6qk1hKg">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/o1Mif0xfzvU/maxresdefault.jpg" alt="Dogged Vine Winery Part 2">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Dogged Vine Winery Part 2</h4>
-                        </div>
+                    <div class="video-card" data-video="o1Mif0xfzvU">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/o1Mif0xfzvU/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Dogged Vine Winery Part 2</h4></div>
                     </div>
-                    <div class="video-card" data-video="trnBZc4eVPc" data-si="6hlBmbeR98d3TdZs">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/trnBZc4eVPc/maxresdefault.jpg" alt="Culture Pop Soda">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Culture Pop Soda</h4>
-                        </div>
+                    <div class="video-card" data-video="trnBZc4eVPc">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/trnBZc4eVPc/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Culture Pop Soda</h4></div>
                     </div>
-                    <div class="video-card" data-video="j5KvO62Nkak" data-si="o4YMVbSumGoq4mj3">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/j5KvO62Nkak/maxresdefault.jpg" alt="Scrubby the Bubble">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Scrubby the Bubble</h4>
-                        </div>
+                    <div class="video-card" data-video="j5KvO62Nkak">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/j5KvO62Nkak/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Scrubby the Bubble</h4></div>
                     </div>
-                    <div class="video-card" data-video="zossDzY27qk" data-si="DrPjJPBmoxtVFw3t">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/zossDzY27qk/maxresdefault.jpg" alt="Gangsta Music Video">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Gangsta Music Video</h4>
-                        </div>
+                    <div class="video-card" data-video="zossDzY27qk">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/zossDzY27qk/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Gangsta Music Video</h4></div>
                     </div>
-                    <div class="video-card" data-video="QfGLgfSaT40" data-si="KJTHvp3iKwnGI0QU">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/QfGLgfSaT40/maxresdefault.jpg" alt="Penn State Promo">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Penn State Promo</h4>
-                        </div>
+                    <div class="video-card" data-video="QfGLgfSaT40">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/QfGLgfSaT40/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Penn State Promo</h4></div>
                     </div>
-                    <div class="video-card" data-video="03kmgB702wk" data-si="nZWBR9BXCEKVCrdq">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/03kmgB702wk/maxresdefault.jpg" alt="Clean Air Project">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Clean Air Project</h4>
-                        </div>
+                    <div class="video-card" data-video="03kmgB702wk">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/03kmgB702wk/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Clean Air Project</h4></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="work-category">
-            <div class="category-header">
-                <h3>Sizzle Reels</h3>
-            </div>
+        <div class="category">
+            <h3 class="category-title">SIZZLE REELS</h3>
             <div class="carousel-wrapper">
-                <div class="carousel-nav prev" onclick="navigateCarousel('sizzle', -1)">‹</div>
-                <div class="carousel-nav next" onclick="navigateCarousel('sizzle', 1)">›</div>
+                <button class="nav-btn prev" onclick="navigate('sizzle', -1)">‹</button>
+                <button class="nav-btn next" onclick="navigate('sizzle', 1)">›</button>
                 <div class="carousel-container" id="sizzle-carousel">
-                    <div class="video-card" data-video="cznIFaQ4RAU" data-si="qvDn_KniY_Oo2j1Y">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/cznIFaQ4RAU/maxresdefault.jpg" alt="E! News Sizzle Reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>E! News Sizzle Reel</h4>
-                        </div>
+                    <div class="video-card" data-video="cznIFaQ4RAU">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/cznIFaQ4RAU/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>E! News Sizzle Reel</h4></div>
                     </div>
-                    <div class="video-card" data-video="yX6mpOxISQQ" data-si="xgLaidO-F_BvRkIv">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/yX6mpOxISQQ/maxresdefault.jpg" alt="Style Network Sizzle">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Style Network Sizzle</h4>
-                        </div>
+                    <div class="video-card" data-video="yX6mpOxISQQ">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/yX6mpOxISQQ/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Style Network Sizzle</h4></div>
                     </div>
-                    <div class="video-card" data-video="Hum7OzluzIM" data-si="DQasFhE3crwAarKT">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/Hum7OzluzIM/maxresdefault.jpg" alt="Louis Vuitton Manifesto">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Louis Vuitton Manifesto</h4>
-                        </div>
+                    <div class="video-card" data-video="Hum7OzluzIM">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/Hum7OzluzIM/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Louis Vuitton Manifesto</h4></div>
                     </div>
-                    <div class="video-card" data-video="LJgZBFCdVCA" data-si="vs7_ISwNgt1hqE1A">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/LJgZBFCdVCA/maxresdefault.jpg" alt="E! Brand Genius Sizzle">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>E! Brand Genius Sizzle</h4>
-                        </div>
+                    <div class="video-card" data-video="LJgZBFCdVCA">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/LJgZBFCdVCA/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>E! Brand Genius Sizzle</h4></div>
                     </div>
-                    <div class="video-card" data-video="swsTHPf4V9Q" data-si="VL6BbP4bAtk1RyXl">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/swsTHPf4V9Q/maxresdefault.jpg" alt="Boost Media">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Boost Media</h4>
-                        </div>
+                    <div class="video-card" data-video="swsTHPf4V9Q">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/swsTHPf4V9Q/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Boost Media</h4></div>
                     </div>
-                    <div class="video-card" data-video="-YKf7nBHv8s" data-si="OOZ7ws5rYyJivrH5">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/-YKf7nBHv8s/maxresdefault.jpg" alt="Canon Project Imagine">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Canon Project Imagine</h4>
-                        </div>
+                    <div class="video-card" data-video="-YKf7nBHv8s">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/-YKf7nBHv8s/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Canon Project Imagine</h4></div>
                     </div>
-                    <div class="video-card" data-video="LQKbsKmUpYA" data-si="cx0Ha5dwZusZg2p8">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/LQKbsKmUpYA/maxresdefault.jpg" alt="Nestle Sizzle">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Nestle Sizzle</h4>
-                        </div>
+                    <div class="video-card" data-video="LQKbsKmUpYA">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/LQKbsKmUpYA/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Nestle Sizzle</h4></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="work-category">
-            <div class="category-header">
-                <h3>Network Promos</h3>
-            </div>
+        <div class="category">
+            <h3 class="category-title">NETWORK PROMOS</h3>
             <div class="carousel-wrapper">
-                <div class="carousel-nav prev" onclick="navigateCarousel('network', -1)">‹</div>
-                <div class="carousel-nav next" onclick="navigateCarousel('network', 1)">›</div>
+                <button class="nav-btn prev" onclick="navigate('network', -1)">‹</button>
+                <button class="nav-btn next" onclick="navigate('network', 1)">›</button>
                 <div class="carousel-container" id="network-carousel">
-                    <div class="video-card" data-video="YPavny07GBA" data-si="5ZHyaVlUpihsSNeX">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/YPavny07GBA/maxresdefault.jpg" alt="Movies Combo Reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Movies Combo Reel</h4>
-                        </div>
-                    </div>
-                    <div class="video-card" data-video="CrE6aZmO8Js" data-si="tcPZw5MF5WySPiii">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/CrE6aZmO8Js/maxresdefault.jpg" alt="Co Branded Reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Co Branded Reel</h4>
-                        </div>
-                    </div>
-                    <div class="video-card" data-video="WoFdtmy1_kg" data-si="CvKQHirbMsq-GXK5">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/WoFdtmy1_kg/maxresdefault.jpg" alt="Films Reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Films Reel</h4>
-                        </div>
-                    </div>
-                    <div class="video-card" data-video="-0bTfKkLXZs" data-si="Nb3mvOOCpXT1i9m1">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/-0bTfKkLXZs/maxresdefault.jpg" alt="Shows Combo Reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Shows Combo Reel</h4>
-                        </div>
-                    </div>
-                    <div class="video-card" data-video="cMYUaX4w-aI" data-si="cXIiSCOcsBv7h1ph">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/cMYUaX4w-aI/maxresdefault.jpg" alt="Awards Reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Awards Reel</h4>
-                        </div>
-                    </div>
                     <div class="video-card" data-video="YPavny07GBA">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/YPavny07GBA/maxresdefault.jpg" alt="Movies Combo Reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Movies Combo Reel</h4>
-                        </div>
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/YPavny07GBA/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Movies Combo Reel</h4></div>
+                    </div>
+                    <div class="video-card" data-video="CrE6aZmO8Js">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/CrE6aZmO8Js/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Co Branded Reel</h4></div>
+                    </div>
+                    <div class="video-card" data-video="WoFdtmy1_kg">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/WoFdtmy1_kg/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Films Reel</h4></div>
+                    </div>
+                    <div class="video-card" data-video="-0bTfKkLXZs">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/-0bTfKkLXZs/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Shows Combo Reel</h4></div>
+                    </div>
+                    <div class="video-card" data-video="cMYUaX4w-aI">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/cMYUaX4w-aI/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Awards Reel</h4></div>
                     </div>
                     <div class="video-card" data-video="fYNKFbCHNqw">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/fYNKFbCHNqw/maxresdefault.jpg" alt="Shows Reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Shows Reel</h4>
-                        </div>
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/fYNKFbCHNqw/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Shows Reel</h4></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="work-category">
-            <div class="category-header">
-                <h3>Corporate</h3>
-            </div>
+        <div class="category">
+            <h3 class="category-title">CORPORATE & BRAND</h3>
             <div class="carousel-wrapper">
-                <div class="carousel-nav prev" onclick="navigateCarousel('corporate', -1)">‹</div>
-                <div class="carousel-nav next" onclick="navigateCarousel('corporate', 1)">›</div>
+                <button class="nav-btn prev" onclick="navigate('corporate', -1)">‹</button>
+                <button class="nav-btn next" onclick="navigate('corporate', 1)">›</button>
                 <div class="carousel-container" id="corporate-carousel">
-                    <div class="video-card" data-video="3Pry-MvCVkI" data-si="tuSQw8SouQHlxTlx">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/3Pry-MvCVkI/maxresdefault.jpg" alt="Nestle Opportunity">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Nestle Opportunity</h4>
-                        </div>
+                    <div class="video-card" data-video="3Pry-MvCVkI">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/3Pry-MvCVkI/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Nestle Opportunity</h4></div>
                     </div>
-                    <div class="video-card" data-video="erNjGWGsViQ" data-si="7r3nFFOSiEl7gi-k">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/erNjGWGsViQ/maxresdefault.jpg" alt="Walmart Diversity">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Walmart Diversity</h4>
-                        </div>
+                    <div class="video-card" data-video="erNjGWGsViQ">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/erNjGWGsViQ/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Walmart Diversity</h4></div>
                     </div>
-                    <div class="video-card" data-video="BWE0CmwFerU" data-si="yd2FQwxyfDxEgAGJ">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/BWE0CmwFerU/maxresdefault.jpg" alt="Diamond Bullion Intro">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Diamond Bullion Intro</h4>
-                        </div>
+                    <div class="video-card" data-video="BWE0CmwFerU">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/BWE0CmwFerU/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Diamond Bullion Intro</h4></div>
                     </div>
-                    <div class="video-card" data-video="EeGlpjnAuCw" data-si="dsg8sE1WgCzQ9VCJ">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/EeGlpjnAuCw/maxresdefault.jpg" alt="What is Diamond Bullion">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>What is Diamond Bullion</h4>
-                        </div>
+                    <div class="video-card" data-video="EeGlpjnAuCw">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/EeGlpjnAuCw/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>What is Diamond Bullion</h4></div>
                     </div>
-                    <div class="video-card" data-video="jFOVlc8NnbY" data-si="kGz1Wh3O4damkG0s">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/jFOVlc8NnbY/maxresdefault.jpg" alt="Why Diamonds Now">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Why Diamonds Now</h4>
-                        </div>
+                    <div class="video-card" data-video="jFOVlc8NnbY">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/jFOVlc8NnbY/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Why Diamonds Now</h4></div>
                     </div>
-                    <div class="video-card" data-video="CpMYzgra1es" data-si="0lgQq1tm96sQVYoh">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/CpMYzgra1es/maxresdefault.jpg" alt="Saint Johns 30 sec">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Saint Johns 30 sec</h4>
-                        </div>
+                    <div class="video-card" data-video="CpMYzgra1es">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/CpMYzgra1es/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Saint Johns 30 sec</h4></div>
                     </div>
-                    <div class="video-card" data-video="LXefUBztpYg" data-si="uz_tNsgrHkRgris9">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/LXefUBztpYg/maxresdefault.jpg" alt="Saint Johns Power">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Saint Johns Power</h4>
-                        </div>
+                    <div class="video-card" data-video="LXefUBztpYg">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/LXefUBztpYg/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Saint Johns Power</h4></div>
                     </div>
-                    <div class="video-card" data-video="Pk3gNGYpv3Q" data-si="aTYSXl-t_qDwOb-r">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/Pk3gNGYpv3Q/maxresdefault.jpg" alt="Saint Johns Nurse Nikki">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Saint Johns Nurse Nikki</h4>
-                        </div>
+                    <div class="video-card" data-video="Pk3gNGYpv3Q">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/Pk3gNGYpv3Q/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Saint Johns Nurse Nikki</h4></div>
                     </div>
-                    <div class="video-card" data-video="cHsNhiT8B6Q" data-si="Tz13d9ksLyvmw2E1">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/cHsNhiT8B6Q/maxresdefault.jpg" alt="MakerBot Engineering">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>MakerBot Engineering & Design</h4>
-                        </div>
+                    <div class="video-card" data-video="cHsNhiT8B6Q">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/cHsNhiT8B6Q/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>MakerBot Engineering & Design</h4></div>
                     </div>
-                    <div class="video-card" data-video="8_C58eFOKOo" data-si="-Kpz2helZZSJqq75">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/8_C58eFOKOo/maxresdefault.jpg" alt="MakerBot GE FirstBuild">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>MakerBot Stories: GE FirstBuild</h4>
-                        </div>
+                    <div class="video-card" data-video="8_C58eFOKOo">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/8_C58eFOKOo/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>MakerBot Stories: GE FirstBuild</h4></div>
                     </div>
-                    <div class="video-card" data-video="1kaS1HCjlxw" data-si="VHKtOdwulyblRrRQ">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/1kaS1HCjlxw/maxresdefault.jpg" alt="MakerBot Martha">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>MakerBot Martha</h4>
-                        </div>
+                    <div class="video-card" data-video="1kaS1HCjlxw">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/1kaS1HCjlxw/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>MakerBot Martha</h4></div>
                     </div>
-                    <div class="video-card" data-video="rxRG6fy5Fws" data-si="hkWYFLxwcjLCDybX">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/rxRG6fy5Fws/maxresdefault.jpg" alt="MakerBot Medical">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>MakerBot Medical Research</h4>
-                        </div>
+                    <div class="video-card" data-video="rxRG6fy5Fws">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/rxRG6fy5Fws/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>MakerBot Medical Research</h4></div>
                     </div>
-                    <div class="video-card" data-video="DBwCraLA1Ms" data-si="28Kauvj_LMtaXRoB">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/DBwCraLA1Ms/maxresdefault.jpg" alt="MakerBot Brooklyn Tech">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>MakerBot Brooklyn Tech</h4>
-                        </div>
+                    <div class="video-card" data-video="DBwCraLA1Ms">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/DBwCraLA1Ms/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>MakerBot Brooklyn Tech</h4></div>
                     </div>
-                    <div class="video-card" data-video="DfTm9jnb9gY" data-si="NgNU8hkzevbriEAn">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/DfTm9jnb9gY/maxresdefault.jpg" alt="Avaya Nurse">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Avaya Nurse</h4>
-                        </div>
+                    <div class="video-card" data-video="DfTm9jnb9gY">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/DfTm9jnb9gY/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Avaya Nurse</h4></div>
                     </div>
-                    <div class="video-card" data-video="ldFy7r9SoJc" data-si="7AWQPwXX7ffXfJPd">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/ldFy7r9SoJc/maxresdefault.jpg" alt="Nvidia MWC">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Nvidia MWC</h4>
-                        </div>
+                    <div class="video-card" data-video="ldFy7r9SoJc">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/ldFy7r9SoJc/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Nvidia MWC</h4></div>
                     </div>
-                    <div class="video-card" data-video="jNcr0pfkUCo" data-si="nvBB8Kiu049IGMjm">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/jNcr0pfkUCo/maxresdefault.jpg" alt="Nvidia MWC AIFI">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Nvidia MWC AIFI</h4>
-                        </div>
+                    <div class="video-card" data-video="jNcr0pfkUCo">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/jNcr0pfkUCo/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Nvidia MWC AIFI</h4></div>
                     </div>
-                    <div class="video-card" data-video="qjElJBFqFfI" data-si="Ew-L4VrB7RlGOjOl">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/qjElJBFqFfI/maxresdefault.jpg" alt="Nvidia MWC Malong">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="video-info">
-                            <h4>Nvidia MWC Malong</h4>
-                        </div>
+                    <div class="video-card" data-video="qjElJBFqFfI">
+                        <div class="thumbnail-box"><img src="https://img.youtube.com/vi/qjElJBFqFfI/maxresdefault.jpg"><div class="play-btn"></div></div>
+                        <div class="video-info"><h4>Nvidia MWC Malong</h4></div>
                     </div>
                 </div>
             </div>
@@ -1090,158 +676,143 @@
     </section>
 
     <section id="skills">
-        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="section-header">
+            <h2>SKILLS & EXPERTISE</h2>
+            <div class="line"></div>
+        </div>
         <div class="skills-grid">
-            <div class="skill-category">
+            <div class="skill-box">
                 <h3>Editing Software</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">Avid Media Composer</span>
-                    <span class="skill-tag">Adobe Premiere Pro</span>
-                    <span class="skill-tag">Final Cut Pro</span>
-                    <span class="skill-tag">DaVinci Resolve</span>
+                <div class="skill-tags">
+                    <span class="tag">Avid Media Composer</span><span class="tag">Adobe Premiere Pro</span>
+                    <span class="tag">Final Cut Pro</span><span class="tag">DaVinci Resolve</span>
                 </div>
             </div>
-            <div class="skill-category">
+            <div class="skill-box">
                 <h3>Post-Production</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">After Effects</span>
-                    <span class="skill-tag">Color Grading</span>
-                    <span class="skill-tag">Sound Design</span>
-                    <span class="skill-tag">Motion Graphics</span>
-                    <span class="skill-tag">VFX Supervision</span>
+                <div class="skill-tags">
+                    <span class="tag">After Effects</span><span class="tag">Color Grading</span>
+                    <span class="tag">Sound Design</span><span class="tag">Motion Graphics</span>
+                    <span class="tag">VFX Supervision</span>
                 </div>
             </div>
-            <div class="skill-category">
+            <div class="skill-box">
                 <h3>Production</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">Directing</span>
-                    <span class="skill-tag">Producing</span>
-                    <span class="skill-tag">Cinematography</span>
-                    <span class="skill-tag">Team Leadership</span>
-                    <span class="skill-tag">Budget Management</span>
+                <div class="skill-tags">
+                    <span class="tag">Directing</span><span class="tag">Producing</span>
+                    <span class="tag">Cinematography</span><span class="tag">Team Leadership</span>
+                    <span class="tag">Budget Management</span>
                 </div>
             </div>
-            <div class="skill-category">
+            <div class="skill-box">
                 <h3>Specializations</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">Trailer Editing</span>
-                    <span class="skill-tag">Commercial Production</span>
-                    <span class="skill-tag">Documentary</span>
-                    <span class="skill-tag">Branded Content</span>
-                    <span class="skill-tag">AI Integration</span>
+                <div class="skill-tags">
+                    <span class="tag">Trailer Editing</span><span class="tag">Commercial Production</span>
+                    <span class="tag">Documentary</span><span class="tag">Branded Content</span>
+                    <span class="tag">AI Integration</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h3>AI Tools</h3>
+                <div class="skill-tags">
+                    <span class="tag">Comfy UI</span><span class="tag">Heavy ai</span><span class="tag">FLUX</span>
+                    <span class="tag">KLING</span><span class="tag">VEO</span><span class="tag">GEMINI</span>
+                    <span class="tag">Claude</span><span class="tag">LTX Studio</span><span class="tag">Higgsfield</span>
+                    <span class="tag">Runway Ml</span>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <h2 class="section-title">Let's Create Something Exceptional</h2>
         <div class="contact-content">
             <div class="contact-info">
-                <h3>Get In Touch</h3>
-                <p>Whether you need a dedicated producer, a focused editor, or a creative who can bridge both roles, I bring a world-class approach to every project. Let's explore how we can create something remarkable.</p>
-                <div class="contact-links">
-                    <a href="mailto:Adam@newhdfilms.com" class="contact-btn">
-                        <span>📧</span>
-                        <span>Email Me</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/adam-litwinski" target="_blank" class="contact-btn">
-                        <span>💼</span>
-                        <span>LinkedIn</span>
-                    </a>
+                <h3>LET'S CREATE SOMETHING EXCEPTIONAL</h3>
+                <p>Whether you need a dedicated producer, a focused editor, or a creative leader who can bridge both roles, I bring a world-class approach to every project.</p>
+                <div class="contact-btns">
+                    <a href="mailto:Adam@newhdfilms.com" class="cta-btn">EMAIL ME</a>
+                    <a href="https://www.linkedin.com/in/adam-litwinski" target="_blank" class="cta-btn outline">LINKEDIN</a>
                 </div>
             </div>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="project">Project Details</label>
-                    <textarea id="project" name="project" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
         </div>
     </section>
 
     <div class="modal" id="videoModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">×</button>
-            <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe id="videoPlayer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
     </div>
 
     <script>
-        // Carousel state management
-        const carouselStates = {
-            reels: { currentPage: 0, itemsPerPage: 2 },
-            ai: { currentPage: 0, itemsPerPage: 3 },
-            sizzle: { currentPage: 0, itemsPerPage: 3 },
-            network: { currentPage: 0, itemsPerPage: 3 },
-            corporate: { currentPage: 0, itemsPerPage: 3 }
+        const states = {
+            ai: { page: 0 },
+            sizzle: { page: 0 },
+            network: { page: 0 },
+            corporate: { page: 0 }
         };
 
-        // Adjust items per page based on screen size
-        function updateItemsPerPage() {
-            const width = window.innerWidth;
-            const itemsPerPage = width <= 768 ? 1 : width <= 1024 ? 2 : 3;
+        function getItemsPerPage() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        }
+
+        function checkMobile() {
+            return window.innerWidth <= 768;
+        }
+
+        // Initialize display to prevent hidden items on load in mobile
+        function initLayout() {
+            if (checkMobile()) {
+                // Force all carousel items to be visible so scroll works
+                document.querySelectorAll('.carousel-container:not(#reels-carousel) .video-card').forEach(card => {
+                    card.style.display = 'block';
+                });
+            } else {
+                // If desktop, apply pagination logic
+                Object.keys(states).forEach(id => navigate(id, 0));
+            }
+        }
+
+        function navigate(id, dir) {
+            const container = document.getElementById(`${id}-carousel`);
             
-            Object.keys(carouselStates).forEach(key => {
-                if (key === 'reels') {
-                    carouselStates[key].itemsPerPage = width <= 768 ? 1 : 2;
-                } else {
-                    carouselStates[key].itemsPerPage = itemsPerPage;
-                }
-                carouselStates[key].currentPage = 0;
+            // MOBILE: SCROLL LOGIC
+            if (checkMobile()) {
+                const cardWidth = container.querySelector('.video-card').offsetWidth;
+                const gap = 16; // 1rem gap
+                const scrollAmount = cardWidth + gap;
+                
+                container.scrollBy({
+                    left: dir * scrollAmount,
+                    behavior: 'smooth'
+                });
+                return; 
+            }
+
+            // DESKTOP: PAGINATION LOGIC
+            const items = container.querySelectorAll('.video-card');
+            const perPage = getItemsPerPage();
+            const totalPages = Math.ceil(items.length / perPage);
+            
+            states[id].page = (states[id].page + dir + totalPages) % totalPages;
+            
+            items.forEach((item, idx) => {
+                const start = states[id].page * perPage;
+                const end = start + perPage;
+                item.style.display = (idx >= start && idx < end) ? 'block' : 'none';
             });
-            
-            updateAllCarousels();
         }
 
-        function navigateCarousel(carouselId, direction) {
-            const state = carouselStates[carouselId];
-            const carousel = document.getElementById(`${carouselId}-carousel`);
-            const cards = carousel.querySelectorAll('.video-card');
-            const totalPages = Math.ceil(cards.length / state.itemsPerPage);
-            
-            state.currentPage = (state.currentPage + direction + totalPages) % totalPages;
-            updateCarousel(carouselId);
-        }
-
-        function updateCarousel(carouselId) {
-            const state = carouselStates[carouselId];
-            const carousel = document.getElementById(`${carouselId}-carousel`);
-            if (!carousel) return;
-            
-            const cards = carousel.querySelectorAll('.video-card');
-            
-            cards.forEach((card, index) => {
-                const startIndex = state.currentPage * state.itemsPerPage;
-                const endIndex = startIndex + state.itemsPerPage;
-                card.style.display = (index >= startIndex && index < endIndex) ? 'block' : 'none';
-            });
-        }
-
-        function updateAllCarousels() {
-            Object.keys(carouselStates).forEach(id => updateCarousel(id));
-        }
-
-        // Video Modal
-        const videoCards = document.querySelectorAll('.video-card');
+        // Video Player Logic
         const modal = document.getElementById('videoModal');
-        const videoPlayer = document.getElementById('videoPlayer');
+        const player = document.getElementById('videoPlayer');
 
-        videoCards.forEach(card => {
+        document.querySelectorAll('.video-card').forEach(card => {
             card.addEventListener('click', () => {
-                const videoId = card.dataset.video;
-                const si = card.dataset.si;
-                const autoplay = card.dataset.autoplay === 'true' ? '1' : '0';
-                videoPlayer.src = `https://www.youtube.com/embed/${videoId}?si=${si}&autoplay=${autoplay}`;
+                const id = card.dataset.video;
+                player.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             });
@@ -1249,64 +820,21 @@
 
         function closeModal() {
             modal.classList.remove('active');
-            videoPlayer.src = '';
+            player.src = '';
             document.body.style.overflow = 'auto';
         }
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
+        modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+
+        // Init carousels on resize and load
+        window.addEventListener('resize', () => {
+            // Reset page count on resize to avoid index errors
+            Object.keys(states).forEach(id => { states[id].page = 0; });
+            initLayout();
         });
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        // Form submission
-        function handleSubmit(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const project = formData.get('project');
-            
-            const subject = encodeURIComponent(`Project Inquiry from ${name}`);
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nProject Details:\n${project}`);
-            window.location.href = `mailto:Adam@newhdfilms.com?subject=${subject}&body=${body}`;
-            
-            e.target.reset();
-        }
-
-        // Active nav link on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.style.color = 'var(--text-secondary)';
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.style.color = 'var(--text-primary)';
-                }
-            });
-        });
-
-        // Initialize carousels and handle window resize
-        window.addEventListener('load', updateItemsPerPage);
-        window.addEventListener('resize', updateItemsPerPage);
+        
+        // Initial Load
+        initLayout();
     </script>
 </body>
 </html>
